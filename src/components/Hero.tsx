@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { projects } from "@/data/projects";
 
 function SplitWord({ text }: { text: string }) {
   return (
@@ -18,11 +17,8 @@ function SplitWord({ text }: { text: string }) {
   );
 }
 
-const heroProject = projects[0];
-const heroVideo = heroProject?.video ? `/videos/${heroProject.video}` : undefined;
-const heroPoster = heroProject?.video
-  ? `/videos/posters/${heroProject.video.replace(/\.mp4$/, ".jpg")}`
-  : undefined;
+const heroVideo = "/videos/reel.mp4";
+const heroPoster = "/videos/posters/reel.jpg";
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -75,7 +71,7 @@ export default function Hero() {
 
       <div className="flex items-center justify-between px-6 md:px-12 pb-8 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/50">
         <span>Director — Motion Design — Edit</span>
-        <span>8 Cannes Lions</span>
+        <span>Showreel 2025 · 8 Cannes Lions</span>
       </div>
 
       <div className="h-10 w-full border-t border-fg/10 flex">

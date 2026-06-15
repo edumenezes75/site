@@ -301,6 +301,7 @@ export const projects: Project[] = [
       "Missing masterpieces recreated in a digital gallery for Compass UOL — turning the absence of the originals into the exhibition itself, and cultural loss into something people can finally look at.",
     result: "Clube de Criação Bronze in both Digital and Use of Technology.",
     video: "stolen-art-gallery.mp4",
+    hasFilm: true,
   },
   {
     slug: "inequality-balls",
@@ -326,6 +327,7 @@ export const projects: Project[] = [
       "Resize the footballs and basketballs themselves to match the real disparities in pay, investment and airtime, and the inequality becomes something you can hold in your hands.",
     result: "Cannes Lions 2018 Silver and Bronze in Design, plus a Clio Sports Grand Award for espnW.",
     video: "inequality-balls.mp4",
+    hasFilm: true,
   },
   {
     slug: "my-game-my-name",
@@ -351,6 +353,7 @@ export const projects: Project[] = [
       "Male streamers and influencers played live under female usernames — the harassment that followed, unscripted, became the proof the campaign needed.",
     result: "Cannes Lions 2018 Silver in Glass: The Lion for Change, Bronze in PR, and finalist placements in Social & Influencer and Sustainable Development Goals.",
     video: "my-game-my-name.mp4",
+    hasFilm: true,
   },
   {
     slug: "itau-rebranding",
@@ -372,6 +375,7 @@ export const projects: Project[] = [
       "The mark was rebuilt around the \"Feito de Futuro\" platform — proportions and motion refined so the identity reads as both legacy and forward motion, ready for the bank's hundredth year.",
     result: "The new identity now anchors Itaú's visual system across every touchpoint, heading into the bank's centennial.",
     video: "itau-rebranding.mp4",
+    hasFilm: true,
   },
   {
     slug: "letters-from-simone",
@@ -394,6 +398,7 @@ export const projects: Project[] = [
       "Text, image and motion design were paced around the voice in the recordings, holding back wherever the material could carry itself — restraint as the structure, not the absence of one.",
     result: "BEA World Experience Grand Prix, plus Silver in B2C Event and Press & PR, and AMPRO Globe Gold and Bronze for Itaú.",
     video: "letters-from-simone.mp4",
+    hasFilm: true,
   },
   {
     slug: "fisherman-storytellers",
@@ -420,6 +425,7 @@ export const projects: Project[] = [
       "Oral folklore from local fishermen, turned into a multimedia storytelling format for Corona — repositioning the closed season as cultural tourism instead of downtime.",
     result: "Cannes Lions 2025 Silver in both Audio & Radio and Brand Experience.",
     video: "fisherman-storytellers.mp4",
+    hasFilm: true,
   },
   {
     slug: "sos-bees",
@@ -459,6 +465,7 @@ export const projects: Project[] = [
       "Chael Sonnen returned to face Anderson Silva one more time, turning Spaten's debut into a live broadcast built around one of MMA's most recognizable rivalries in Brazil.",
     result: "A live branded event that put Spaten inside a symbolic final chapter for Anderson Silva's career in Brazil.",
     video: "spaten-night-fight.mp4",
+    hasFilm: true,
   },
   {
     slug: "air-silva",
@@ -499,6 +506,7 @@ export const projects: Project[] = [
       "An AI trained on interviews, articles, news reports and congressional sessions generated a single virtual character whose answers reflected the average position of Brazil's political class — built for MTV Brasil and aimed at young voters.",
     result: "El Ojo de Iberoamérica 2018 Bronze in Creative Data.",
     video: "mr-congressman.mp4",
+    hasFilm: true,
   },
   {
     slug: "team-never-lost",
@@ -515,6 +523,7 @@ export const projects: Project[] = [
       "For World Down Syndrome Day, the team's unbeaten record became the headline — reframing what \"winning\" means for a squad of athletes with Down syndrome, and putting their story ahead of the score.",
     result: "A campaign for Corinthians that shifted the conversation from disability to achievement, built entirely around a record that speaks for itself.",
     video: "team-never-lost.mp4",
+    hasFilm: true,
   },
   {
     slug: "havaianas-pinterest",
@@ -531,6 +540,7 @@ export const projects: Project[] = [
       "The brand's color, rhythm and tropical energy were translated into a library of Pinterest-native assets — extending the \"Made of Brazilian Summer\" platform into a space built for scroll-and-save behavior.",
     result: "A digital extension of Havaianas' global visual system for Alpargatas, built for Pinterest's discovery-first audience.",
     video: "havaianas-pinterest.mp4",
+    hasFilm: true,
   },
   {
     slug: "vale-dots",
@@ -546,6 +556,7 @@ export const projects: Project[] = [
       "A modular, dot-based visual language built to translate Vale's institutional themes into emotional, motion-led storytelling — direction, editing, motion design and sound effects in one hand.",
     result: "A new-business pitch reel developed by Edu Menezes with Sergio Gordilho, built to demonstrate creative development and motion storytelling rather than to run as a public campaign.",
     video: "vale-dots.mp4",
+    hasFilm: true,
   },
 ];
 
