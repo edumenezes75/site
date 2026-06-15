@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { track } from "@vercel/analytics";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 import { formatTimecode } from "@/lib/timecode";
@@ -65,6 +66,7 @@ export default function Hero() {
   }, []);
 
   const watchReel = () => {
+    track("watch_showreel");
     const el = videoRef.current;
     if (!el) return;
     // Swap the light background loop for the full reel with audio.
@@ -95,7 +97,7 @@ export default function Hero() {
       {/* Lighter scrim — let the reel read as an image, only darken where type sits */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/40 to-bg/20" />
 
-      <div className="flex-1 flex flex-col justify-center gap-8 px-6 md:px-12">
+      <div className="flex-1 flex flex-col justify-center gap-6 px-6 md:px-12">
         <h1
           ref={titleRef}
           className="font-display text-[17vw] md:text-[12vw] leading-[0.82] tracking-[-0.01em]"
@@ -108,24 +110,33 @@ export default function Hero() {
           </span>
         </h1>
 
-        <button
-          type="button"
-          onClick={watchReel}
-          data-cursor="play"
-          data-cursor-label="Play reel"
-          className="group inline-flex w-fit items-center gap-3 rounded-full border border-fg/25 bg-black/30 px-5 py-3 font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] text-fg backdrop-blur-sm transition-colors hover:border-gold hover:text-gold"
-        >
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-gold text-bg transition-transform group-hover:scale-110">
-            ▶
+        <p className="max-w-xl font-display text-xl md:text-3xl text-fg/85 leading-snug">
+          Motion director for award-winning campaigns.
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={watchReel}
+            data-cursor="play"
+            data-cursor-label="Play reel"
+            className="group inline-flex w-fit items-center gap-3 rounded-full border border-fg/25 bg-black/30 px-5 py-3 font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] text-fg backdrop-blur-sm transition-colors hover:border-gold hover:text-gold"
+          >
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-gold text-bg transition-transform group-hover:scale-110">
+              ▶
+            </span>
+            Watch Showreel — 1:44
+          </button>
+          <span className="inline-flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/70">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold motion-safe:animate-pulse" />
+            Available for projects worldwide
           </span>
-          Watch Showreel — 1:44
-        </button>
+        </div>
       </div>
 
       <div className="flex items-center justify-between gap-4 px-6 md:px-12 pb-10 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/65">
-        <span>Director — Motion Design — Edit</span>
+        <span>Motion Design · Direction · Edit</span>
         <span className="hidden sm:inline-flex items-center gap-2 text-gold/90 tabular-nums normal-case tracking-[0.1em]">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold motion-safe:animate-pulse" />
           <span ref={tcRef}>00:00:00:00</span>
         </span>
         <span>Showreel 2025 · 8 Cannes Lions</span>
