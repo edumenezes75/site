@@ -46,19 +46,17 @@ export default function ProjectIndex() {
                 href={`/projects/${p.slug}`}
                 data-cursor="play"
                 data-cursor-label={`No. ${String(no).padStart(2, "0")}`}
-                className="group grid grid-cols-[40px_1fr] md:grid-cols-[60px_1.6fr_1fr_1fr] items-center gap-x-4 md:gap-x-8 gap-y-1 py-5 md:py-6"
+                className="group flex items-baseline gap-4 md:gap-6 py-4 transition-colors hover:bg-fg/[0.02]"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">
+                <span className="w-7 shrink-0 font-mono text-[10px] tabular-nums tracking-[0.15em] text-fg/55">
                   {String(no).padStart(2, "0")}
                 </span>
-                <span className="font-display text-xl md:text-2xl transition-colors group-hover:text-gold">
+                <span className="font-display text-xl md:text-2xl leading-tight transition-colors group-hover:text-gold">
                   {p.title}
                 </span>
-                <span className="col-start-2 md:col-start-3 font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">
+                <span className="ml-auto pl-4 text-right font-mono text-[10px] uppercase tracking-[0.18em] text-fg/70">
                   {p.client}
-                </span>
-                <span className="hidden md:block font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">
-                  {p.agency}
+                  <span className="hidden md:inline text-fg/55"> · {p.agency}</span>
                 </span>
               </TransitionLink>
             </li>

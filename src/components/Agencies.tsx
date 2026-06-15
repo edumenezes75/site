@@ -1,18 +1,8 @@
-// International-forward credibility strip — the agencies and brands speak before
-// the work does. Global shops listed first to signal worldwide caliber.
+// International-forward credibility — agencies and brands. Label on top, names
+// full-width so they wrap evenly; sized as a quiet list, not a headline.
 const agencies = [
-  "Wieden+Kennedy",
-  "BBH New York",
-  "FCB Chicago",
-  "Ogilvy New York",
-  "GUT Miami",
-  "R/GA",
-  "AlmapBBDO",
-  "Publicis",
-  "Africa Creative DDB",
-  "DM9",
-  "Grey",
-  "CP+B",
+  "Wieden+Kennedy", "BBH New York", "FCB Chicago", "Ogilvy New York", "GUT Miami",
+  "R/GA", "AlmapBBDO", "Publicis", "Africa Creative DDB", "DM9", "Grey", "CP+B",
 ];
 
 const brands = [
@@ -23,27 +13,19 @@ const brands = [
 export default function Agencies() {
   return (
     <section className="bg-bg text-fg px-6 md:px-12 py-20 md:py-28 border-t border-fg/10">
-      <div className="grid gap-16 md:grid-cols-[160px_1fr] md:gap-12">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-fg/50">
-          Agencies
-        </span>
-        <ul className="flex flex-wrap gap-x-8 gap-y-3 font-display text-2xl md:text-4xl text-fg/85 leading-tight">
-          {agencies.map((a) => (
-            <li key={a}>{a}</li>
-          ))}
-        </ul>
-      </div>
+      <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-fg/50">Agencies</h3>
+      <ul className="mt-5 flex flex-wrap gap-x-7 gap-y-2 font-display text-2xl md:text-[2rem] leading-[1.15] text-fg/85">
+        {agencies.map((a) => (
+          <li key={a}>{a}</li>
+        ))}
+      </ul>
 
-      <div className="mt-14 md:mt-20 grid gap-16 md:grid-cols-[160px_1fr] md:gap-12">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-fg/50">
-          Brands
-        </span>
-        <ul className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs md:text-sm uppercase tracking-[0.15em] text-fg/60">
-          {brands.map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
-      </div>
+      <h3 className="mt-14 font-mono text-[10px] uppercase tracking-[0.25em] text-fg/50">Brands</h3>
+      <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] md:text-xs uppercase tracking-[0.18em] text-fg/55">
+        {brands.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
     </section>
   );
 }

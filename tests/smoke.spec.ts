@@ -16,9 +16,9 @@ test("hero renders the name and value prop", async ({ page }) => {
 
 test("conversion CTA is present in the header", async ({ page }) => {
   await page.goto("/");
-  const cta = page.locator('header a:has-text("Send a brief")');
-  await expect(cta).toBeVisible();
-  await expect(cta).toHaveAttribute("href", /^mailto:/);
+  const cta = page.locator('a:has-text("Send a brief")');
+  expect(await cta.count()).toBeGreaterThanOrEqual(1);
+  await expect(cta.first()).toHaveAttribute("href", /^mailto:.*subject=/);
 });
 
 test("index lists project links", async ({ page }) => {

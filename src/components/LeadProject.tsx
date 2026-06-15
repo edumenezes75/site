@@ -5,8 +5,8 @@ import TransitionLink from "@/components/TransitionLink";
 import { projects, type Project } from "@/data/projects";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 
-// The lead project: a full-bleed, living hero that auto-plays its highlight —
-// gives the index a focal point and answers "a motion site shouldn't be static".
+// The lead project: a full-bleed, living hero. The film plays clean (its own
+// on-screen text isn't fought by an overlay); the project info sits below it.
 export default function LeadProject({ project }: { project: Project }) {
   const catalogNo = projects.findIndex((p) => p.slug === project.slug) + 1;
   const poster = project.video
@@ -14,8 +14,6 @@ export default function LeadProject({ project }: { project: Project }) {
     : undefined;
   const previewSrc = project.video ? `/videos/previews/${project.video}` : undefined;
 
-  // Play the highlight only while the lead is on screen — keeps it "living"
-  // without competing with the hero for the initial page load.
   const videoElRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     const v = videoElRef.current;
@@ -39,9 +37,9 @@ export default function LeadProject({ project }: { project: Project }) {
       href={`/projects/${project.slug}`}
       data-cursor="play"
       data-cursor-label={`No. ${String(catalogNo).padStart(2, "0")}`}
-      className="group relative block w-full overflow-hidden border-y border-fg/10"
+      className="group block w-full border-y border-fg/10"
     >
-      <div className="relative aspect-[16/10] md:aspect-[21/9] w-full">
+      <div className="relative aspect-[16/10] md:aspect-[2.4/1] w-full overflow-hidden">
         {poster && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -62,26 +60,25 @@ export default function LeadProject({ project }: { project: Project }) {
             className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:opacity-100"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      </div>
 
-        <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 md:p-10">
+      {/* Info below the film — no text fighting the film's own on-screen text */}
+      <div className="px-6 md:px-12 py-8 md:py-10 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
+        <div className="max-w-3xl">
           <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.25em] text-gold">
             Featured · No. {String(catalogNo).padStart(2, "0")}
           </span>
-          <h3 className="font-display text-5xl md:text-8xl leading-[0.92] max-w-4xl">
+          <h3 className="mt-3 font-display text-4xl md:text-6xl leading-[0.98]">
             {project.title}
           </h3>
-          <p className="font-display text-lg md:text-2xl text-fg/85 leading-snug max-w-2xl">
+          <p className="mt-3 font-display text-lg md:text-2xl text-fg/70 leading-snug">
             {project.overview}
           </p>
-          <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
-            {project.client} · {project.agency}
-            {project.year ? ` · ${project.year}` : ""}
-            {project.duration ? ` · ${project.duration}` : ""}
-            {project.award ? ` · ` : ""}
-            {project.award && <span className="text-gold">{project.award}</span>}
-          </span>
         </div>
+        <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/55 md:text-right">
+          {project.client} · {project.agency}
+          {project.year ? ` · ${project.year}` : ""}
+        </span>
       </div>
     </TransitionLink>
   );
