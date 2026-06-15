@@ -45,6 +45,8 @@ export default function LeadProject({ project }: { project: Project }) {
           <img
             src={poster}
             alt={project.title}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 h-full w-full object-cover"
           />
         )}

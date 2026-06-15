@@ -106,7 +106,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            priority={index < 3}
+            loading="lazy"
             className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.02]"
           />
         ) : (

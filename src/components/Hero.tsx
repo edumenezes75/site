@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { track } from "@vercel/analytics";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -59,15 +58,14 @@ export default function Hero() {
 
   return (
     <section className="relative isolate h-screen w-full flex flex-col justify-between overflow-hidden bg-bg text-fg">
-      {/* Optimised, priority poster = fast, stable LCP; the reel fades in on top */}
-      <Image
+      {/* Direct, priority poster = fast, stable LCP; the reel fades in on top */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={heroPoster}
         alt=""
         aria-hidden
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 object-cover opacity-70"
+        fetchPriority="high"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-70"
       />
       <video
         ref={videoRef}
