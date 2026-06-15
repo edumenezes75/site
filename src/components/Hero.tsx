@@ -82,7 +82,7 @@ export default function Hero() {
     <section className="relative isolate h-screen w-full flex flex-col justify-between overflow-hidden bg-bg text-fg">
       <video
         ref={videoRef}
-        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-60"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-90"
         src={heroVideo}
         poster={heroPoster}
         autoPlay
@@ -92,7 +92,8 @@ export default function Hero() {
         preload="auto"
         aria-hidden
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg/40 via-bg/70 to-bg" />
+      {/* Lighter scrim — let the reel read as an image, only darken where type sits */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/40 to-bg/20" />
 
       <div className="flex-1 flex flex-col justify-center gap-8 px-6 md:px-12">
         <h1

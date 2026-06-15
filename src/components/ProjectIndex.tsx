@@ -3,11 +3,14 @@
 import { useMemo, useState } from "react";
 import { projects, disciplinesOf, DISCIPLINES, type Discipline } from "@/data/projects";
 import IndexCard from "@/components/IndexCard";
+import LeadProject from "@/components/LeadProject";
 
 type Filter = "All" | Discipline;
 const FILTERS: Filter[] = ["All", ...DISCIPLINES];
 
 const featured = projects.filter((p) => p.featured);
+const lead = featured[0];
+const restFeatured = featured.slice(1);
 
 export default function ProjectIndex() {
   const [filter, setFilter] = useState<Filter>("All");
@@ -22,15 +25,18 @@ export default function ProjectIndex() {
 
   return (
     <section id="index" className="relative bg-bg text-fg">
-      {/* Selected Work */}
+      {/* Selected Work — a full-bleed lead, then a pair grid (rhythm, not a spreadsheet) */}
       <div className="px-6 md:px-12 pt-16 md:pt-24 pb-8 md:pb-10 flex items-end justify-between">
         <h2 className="font-display text-5xl md:text-8xl leading-[0.95]">Selected <span className="italic">Work</span></h2>
-        <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
+        <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/55">
           {featured.length} Highlights
         </span>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-fg/10 border-y border-fg/10">
-        {featured.map((p, i) => (
+
+      {lead && <LeadProject project={lead} />}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-fg/10 border-b border-fg/10">
+        {restFeatured.map((p, i) => (
           <IndexCard key={p.slug} project={p} index={i} />
         ))}
       </div>
@@ -57,8 +63,8 @@ export default function ProjectIndex() {
           ))}
         </div>
       </div>
-      <div className="px-6 md:px-12 pb-4 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/55">
-        {filtered.length} {filtered.length === 1 ? "Project" : "Projects"} — Timeline View
+      <div className="px-6 md:px-12 pb-4 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/45">
+        {filtered.length} {filtered.length === 1 ? "Project" : "Projects"}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-fg/10 border-t border-fg/10">

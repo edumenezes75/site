@@ -9,7 +9,6 @@ export default function IndexCard({ project, index }: { project: Project; index:
   const [videoLoaded, setVideoLoaded] = useState(false);
   const rootRef = useRef<HTMLAnchorElement>(null);
 
-  // On desktop, hovering auto-plays the curated highlight clip (Vimeo-style).
   const videoRef = useCallback((el: HTMLVideoElement | null) => {
     if (el) void el.play().catch(() => {});
   }, []);
@@ -20,12 +19,9 @@ export default function IndexCard({ project, index }: { project: Project; index:
   const poster = project.video
     ? `/videos/posters/${project.video.replace(/\.mp4$/, ".jpg")}`
     : undefined;
-  // Previews are tiny muted clips cut from the most dynamic moment of each film;
-  // the full film with audio only loads on the project page.
   const previewSrc = project.video ? `/videos/previews/${project.video}` : undefined;
 
-  // On touch devices there is no hover — autoplay the highlight when the card
-  // is in view so the index isn't a wall of static posters.
+  // Touch devices: autoplay the highlight in view (and show it in colour).
   useEffect(() => {
     const el = rootRef.current;
     if (!el || !project.video) return;
@@ -33,12 +29,13 @@ export default function IndexCard({ project, index }: { project: Project; index:
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
+          const v = el.querySelector("video");
           if (e.isIntersecting) {
             setVideoLoaded(true);
-            const v = el.querySelector("video");
+            el.dataset.inview = "1";
             if (v) void v.play().catch(() => {});
           } else {
-            const v = el.querySelector("video");
+            delete el.dataset.inview;
             if (v) v.pause();
           }
         }
@@ -55,7 +52,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
       href={`/projects/${project.slug}`}
       data-cursor="play"
       data-cursor-label={catalogLabel}
-      className="group block bg-fg/[0.03] border-b border-fg/10 hover:bg-fg/[0.06] transition-colors duration-300"
+      className="group block border-b border-fg/10 transition-colors duration-300"
       onMouseEnter={() => setVideoLoaded(true)}
       onMouseLeave={(e) => {
         const v = (e.currentTarget as HTMLElement).querySelector("video") as HTMLVideoElement | null;
@@ -65,7 +62,8 @@ export default function IndexCard({ project, index }: { project: Project; index:
         }
       }}
     >
-      {/* Thumbnail / highlight preview */}
+      {/* Thumbnail — monochrome by default, colour on hover/in-view: one system,
+          and the colour return is the motion. */}
       <div className="relative aspect-video overflow-hidden">
         {poster ? (
           <Image
@@ -73,13 +71,13 @@ export default function IndexCard({ project, index }: { project: Project; index:
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            priority={index < 4}
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            priority={index < 3}
+            className="object-cover grayscale transition-[filter,transform] duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.03] group-data-[inview]:grayscale-0"
           />
         ) : (
           <div
             aria-hidden
-            className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="absolute inset-0 grayscale transition-[filter,transform] duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.03]"
             style={{
               background: `linear-gradient(135deg, hsl(${project.hue} 70% 45%), hsl(${project.hue + 40} 70% 12%))`,
             }}
@@ -95,48 +93,34 @@ export default function IndexCard({ project, index }: { project: Project; index:
             playsInline
             preload="none"
             src={previewSrc}
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-data-[inview]:opacity-100"
           />
-        )}
-
-        {/* Duration badge (Vimeo-style), tucked away on hover */}
-        {project.duration && (
-          <span className="absolute right-3 bottom-3 z-10 rounded bg-black/55 px-1.5 py-0.5 font-mono text-[10px] tabular-nums text-fg/90 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
-            {project.duration}
-          </span>
-        )}
-
-        {project.featured && (
-          <span className="absolute left-3 top-3 z-10 rounded-full bg-gold/90 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.15em] text-bg">
-            Selected
-          </span>
         )}
       </div>
 
-      {/* Text area */}
+      {/* Text — two voices only: a quiet mono meta line and a serif title. */}
       <div className="px-5 py-5 md:px-6 md:py-6">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1 min-w-0">
-            <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/55">
-              {catalogLabel} / {projects.length}{project.year ? ` · ${project.year}` : ""}
-            </span>
-            <h3 className="mt-1.5 font-display text-2xl md:text-3xl leading-[1.02] transition-transform duration-300 group-hover:translate-x-0.5">
-              {project.title}
-            </h3>
-            <span className="mt-1 block font-mono text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-fg/65">
-              {project.client} · {project.agency}
-            </span>
-            <p className="mt-3 font-mono text-[11px] md:text-xs text-fg/75 leading-relaxed">
-              {project.overview}
-            </p>
-          </div>
-
+        <div className="flex items-baseline justify-between gap-4">
+          <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/45">
+            {catalogLabel}
+            {project.year ? ` · ${project.year}` : ""}
+            {project.duration ? ` · ${project.duration}` : ""}
+          </span>
           {project.award && (
-            <span className="shrink-0 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-gold text-right leading-tight max-w-[120px]">
+            <span className="shrink-0 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-gold text-right">
               {project.award}
             </span>
           )}
         </div>
+        <h3 className="mt-2 font-display text-2xl md:text-3xl leading-[1.02] transition-transform duration-300 group-hover:translate-x-0.5">
+          {project.title}
+        </h3>
+        <p className="mt-2 font-display text-base md:text-lg text-fg/70 leading-snug">
+          {project.overview}
+        </p>
+        <span className="mt-3 block font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/40">
+          {project.client} · {project.agency}
+        </span>
       </div>
     </TransitionLink>
   );
