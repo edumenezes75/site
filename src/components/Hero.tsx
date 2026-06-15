@@ -75,9 +75,18 @@ export default function Hero() {
 
   return (
     <section className="relative isolate h-screen w-full flex flex-col justify-between overflow-hidden bg-bg text-fg">
+      {/* Eager poster paints instantly (fast, stable LCP); the reel fades in on top */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={heroPoster}
+        alt=""
+        aria-hidden
+        fetchPriority="high"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-70"
+      />
       <video
         ref={videoRef}
-        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-70"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-0 transition-opacity duration-700 data-[on=true]:opacity-70"
         src={heroVideo}
         poster={heroPoster}
         muted
@@ -85,6 +94,7 @@ export default function Hero() {
         playsInline
         preload="none"
         aria-hidden
+        onPlaying={(e) => e.currentTarget.setAttribute("data-on", "true")}
       />
       {/* Calm scrim — the reel is ambient texture; the title floats clearly above it */}
       <div className="absolute inset-0 -z-10 bg-bg/45" />
