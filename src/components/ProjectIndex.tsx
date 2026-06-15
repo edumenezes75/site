@@ -48,7 +48,7 @@ export default function ProjectIndex() {
                 data-cursor-label={`No. ${String(no).padStart(2, "0")}`}
                 className="group grid grid-cols-[40px_1fr] md:grid-cols-[60px_1.6fr_1fr_1fr] items-center gap-x-4 md:gap-x-8 gap-y-1 py-5 md:py-6"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/45">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">
                   {String(no).padStart(2, "0")}
                 </span>
                 <span className="font-display text-xl md:text-2xl transition-colors group-hover:text-gold">
@@ -57,7 +57,7 @@ export default function ProjectIndex() {
                 <span className="col-start-2 md:col-start-3 font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">
                   {p.client}
                 </span>
-                <span className="hidden md:block font-mono text-[10px] uppercase tracking-[0.2em] text-fg/45">
+                <span className="hidden md:block font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">
                   {p.agency}
                 </span>
               </TransitionLink>
