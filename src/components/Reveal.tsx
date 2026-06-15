@@ -20,20 +20,34 @@ export default function Reveal({
       gsap.set(el, { y: 0, opacity: 1 });
       return;
     }
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el,
-        { y: 60, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 85%", once: true },
+
+    // IntersectionObserver drives the reveal — reliable regardless of the
+    // smooth-scroll layer, and it can never trap content invisible (a safety
+    // timeout reveals anything still hidden, e.g. if the observer never fires).
+    gsap.set(el, { y: 60, opacity: 0 });
+    const reveal = () =>
+      gsap.to(el, { y: 0, opacity: 1, duration: 1, ease: "power3.out" });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          reveal();
+          io.disconnect();
         }
-      );
-    }, el);
-    return () => ctx.revert();
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+
+    const safety = window.setTimeout(() => {
+      gsap.set(el, { y: 0, opacity: 1 });
+      io.disconnect();
+    }, 4000);
+
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+    };
   }, []);
 
   return (
