@@ -101,7 +101,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
       {/* Text — two voices only: a quiet mono meta line and a serif title. */}
       <div className="px-5 py-5 md:px-6 md:py-6">
         <div className="flex items-baseline justify-between gap-4">
-          <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/45">
+          <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/60">
             {catalogLabel}
             {project.year ? ` · ${project.year}` : ""}
             {project.duration ? ` · ${project.duration}` : ""}
@@ -118,7 +118,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
         <p className="mt-2 font-display text-base md:text-lg text-fg/70 leading-snug">
           {project.overview}
         </p>
-        <span className="mt-3 block font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/40">
+        <span className="mt-3 block font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/60">
           {project.client} · {project.agency}
         </span>
       </div>

@@ -63,7 +63,7 @@ export default function ProjectIndex() {
           ))}
         </div>
       </div>
-      <div className="px-6 md:px-12 pb-4 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/45">
+      <div className="px-6 md:px-12 pb-4 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
         {filtered.length} {filtered.length === 1 ? "Project" : "Projects"}
       </div>
 
