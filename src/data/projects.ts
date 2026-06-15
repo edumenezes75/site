@@ -449,6 +449,7 @@ export const projects: Project[] = [
       "BEES, Ambev's B2B ordering app, was rebuilt in under 24 hours into a crisis hub — restocking, cleaning supplies, equipment replacement, repair services, cash vouchers, legal aid, insurance support and mental health helplines, all through the login bars already had.",
     result: "6,360 bars helped through the platform, 82% still operating a year later, 98.8% customer confidence in sales recovery, and Crisis Mode is now a permanent feature of the BEES app — alongside Cannes Lions 2025 Bronze in Sustainable Development Goals and a Creative B2B shortlist.",
     video: "sos-bees.mp4",
+    hasFilm: true,
   },
   {
     slug: "spaten-night-fight",
@@ -489,6 +490,7 @@ export const projects: Project[] = [
       "The Silva 1932 collection is built around his bicycle kick and the year 1932, using his silhouette and legacy as the visual spine of the campaign for Volt Sport.",
     result: "A cultural tribute that turns a jersey collection into a piece of football history — connecting Leônidas's legacy to the aesthetics of the modern game.",
     video: "air-silva.mp4",
+    hasFilm: true,
   },
   {
     slug: "mr-congressman",
