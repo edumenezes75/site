@@ -87,7 +87,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
       href={`/projects/${project.slug}`}
       data-cursor="play"
       data-cursor-label={catalogLabel}
-      className="group block bg-bg border-b border-fg/10 transition-colors duration-300 hover:bg-white/[0.02]"
+      className="group block bg-bg border-b border-fg/10"
       onMouseEnter={() => setVideoLoaded(true)}
       onMouseLeave={(e) => {
         const v = (e.currentTarget as HTMLElement).querySelector("video") as HTMLVideoElement | null;
@@ -107,12 +107,12 @@ export default function IndexCard({ project, index }: { project: Project; index:
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             priority={index < 3}
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.02]"
           />
         ) : (
           <div
             aria-hidden
-            className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="absolute inset-0 transition-transform duration-[900ms] ease-out group-hover:scale-[1.02]"
             style={{
               background: `linear-gradient(135deg, hsl(${project.hue} 70% 45%), hsl(${project.hue + 40} 70% 12%))`,
             }}
@@ -134,7 +134,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
       </div>
 
       {/* Text — two voices only: a quiet mono meta line and a serif title. */}
-      <div className="px-5 py-5 md:px-6 md:py-6">
+      <div className="px-5 py-6 md:px-7 md:py-8">
         <div className="flex items-baseline justify-between gap-4">
           <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/60">
             {catalogLabel}
@@ -147,7 +147,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
             </span>
           )}
         </div>
-        <h3 className="mt-2 font-display text-2xl md:text-3xl leading-[1.02] transition-transform duration-300 group-hover:translate-x-0.5">
+        <h3 className="mt-2 font-display text-2xl md:text-3xl leading-[1.05]">
           {project.title}
         </h3>
         <p className="mt-2 font-display text-base md:text-lg text-fg/70 leading-snug">

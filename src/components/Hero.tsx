@@ -69,7 +69,7 @@ export default function Hero() {
     <section className="relative isolate h-screen w-full flex flex-col justify-between overflow-hidden bg-bg text-fg">
       <video
         ref={videoRef}
-        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-90"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-70"
         src={heroVideo}
         poster={heroPoster}
         autoPlay
@@ -79,13 +79,14 @@ export default function Hero() {
         preload="auto"
         aria-hidden
       />
-      {/* Lighter scrim — let the reel read as an image, only darken where type sits */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/40 to-bg/20" />
+      {/* Calm scrim — the reel is ambient texture; the title floats clearly above it */}
+      <div className="absolute inset-0 -z-10 bg-bg/45" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/45 to-bg/20" />
 
-      <div className="flex-1 flex flex-col justify-center gap-6 px-6 md:px-12">
+      <div className="flex-1 flex flex-col justify-center gap-8 md:gap-10 px-6 md:px-12">
         <h1
           ref={titleRef}
-          className="font-display text-[17vw] md:text-[12vw] leading-[0.82] tracking-[-0.01em]"
+          className="font-display text-[15vw] md:text-[10.5vw] leading-[0.95] tracking-[-0.01em] py-[0.05em]"
         >
           <span className="block">
             <SplitWord text="Edu" />

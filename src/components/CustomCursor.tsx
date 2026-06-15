@@ -15,23 +15,34 @@ export default function CustomCursor() {
   }, []);
 
   useEffect(() => {
-    const move = (e: MouseEvent) => {
+    // Gentle trailing motion (lerp) — a calmer, more refined cursor than a
+    // dot snapping 1:1 to the pointer.
+    const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const pos = { ...target };
+    let raf = 0;
+    const tick = () => {
+      pos.x += (target.x - pos.x) * 0.2;
+      pos.y += (target.y - pos.y) * 0.2;
       if (ref.current) {
-        ref.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+        ref.current.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`;
       }
+      raf = requestAnimationFrame(tick);
     };
+    raf = requestAnimationFrame(tick);
 
+    const move = (e: MouseEvent) => {
+      target.x = e.clientX;
+      target.y = e.clientY;
+    };
     const over = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest<HTMLElement>("[data-cursor]");
-      if (target) {
-        setVariant((target.dataset.cursor as Variant) || "default");
-        setLabel(target.dataset.cursorLabel ?? "");
+      const t = (e.target as HTMLElement).closest<HTMLElement>("[data-cursor]");
+      if (t) {
+        setVariant((t.dataset.cursor as Variant) || "default");
+        setLabel(t.dataset.cursorLabel ?? "");
       }
     };
-
     const out = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest<HTMLElement>("[data-cursor]");
-      if (target) {
+      if ((e.target as HTMLElement).closest<HTMLElement>("[data-cursor]")) {
         setVariant("default");
         setLabel("");
       }
@@ -41,6 +52,7 @@ export default function CustomCursor() {
     document.addEventListener("mouseover", over);
     document.addEventListener("mouseout", out);
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", move);
       document.removeEventListener("mouseover", over);
       document.removeEventListener("mouseout", out);
@@ -49,25 +61,25 @@ export default function CustomCursor() {
 
   const size =
     variant === "default"
-      ? { width: 10, height: 10 }
+      ? { width: 8, height: 8 }
       : variant === "play"
-        ? { width: 64, height: 64 }
-        : { width: 96, height: 32 };
+        ? { width: 46, height: 46 }
+        : { width: 84, height: 30 };
 
   return (
     <div
       ref={ref}
-      className="pointer-events-none fixed top-0 left-0 z-[999] mix-blend-difference hidden md:flex items-center justify-center transition-[width,height] duration-200 ease-out"
+      className="pointer-events-none fixed top-0 left-0 z-[999] mix-blend-difference hidden md:flex items-center justify-center transition-[width,height] duration-300 ease-out"
       style={{
         width: size.width,
         height: size.height,
-        borderRadius: variant === "link" ? 16 : 9999,
+        borderRadius: variant === "link" ? 15 : 9999,
         background: "#F2F1ED",
       }}
     >
-      {variant === "play" && <span className="text-black text-xs font-mono">▶</span>}
+      {variant === "play" && <span className="text-black text-[11px] font-mono">▶</span>}
       {variant === "link" && (
-        <span className="text-black text-[10px] font-mono uppercase tracking-widest px-2 truncate">
+        <span className="text-black text-[9px] font-mono uppercase tracking-[0.15em] px-2 truncate">
           {label}
         </span>
       )}
