@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useEffect, useRef } from "react";
 import TransitionLink from "@/components/TransitionLink";
 import { projects, type Project } from "@/data/projects";
 
@@ -13,8 +13,21 @@ export default function LeadProject({ project }: { project: Project }) {
     : undefined;
   const previewSrc = project.video ? `/videos/previews/${project.video}` : undefined;
 
-  const videoRef = useCallback((el: HTMLVideoElement | null) => {
-    if (el) void el.play().catch(() => {});
+  // Play the highlight only while the lead is on screen — keeps it "living"
+  // without competing with the hero for the initial page load.
+  const videoElRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = videoElRef.current;
+    if (!v) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) void v.play().catch(() => {});
+        else v.pause();
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -35,12 +48,12 @@ export default function LeadProject({ project }: { project: Project }) {
         )}
         {previewSrc && (
           <video
-            ref={videoRef}
+            ref={videoElRef}
             aria-hidden
             muted
             loop
             playsInline
-            preload="auto"
+            preload="none"
             src={previewSrc}
             className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:opacity-100"
           />
