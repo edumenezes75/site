@@ -24,7 +24,7 @@ export default function ProjectIndex() {
     <section id="index" className="relative bg-bg text-fg">
       {/* Selected Work */}
       <div className="px-6 md:px-12 pt-16 md:pt-24 pb-8 md:pb-10 flex items-end justify-between">
-        <h2 className="font-display font-medium text-4xl md:text-7xl uppercase">Selected Work</h2>
+        <h2 className="font-display text-5xl md:text-8xl leading-[0.95]">Selected <span className="italic">Work</span></h2>
         <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
           {featured.length} Highlights
         </span>
@@ -37,7 +37,7 @@ export default function ProjectIndex() {
 
       {/* All Work + discipline filter */}
       <div className="px-6 md:px-12 pt-20 md:pt-28 pb-8 md:pb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <h2 className="font-display font-medium text-4xl md:text-7xl uppercase">All Work</h2>
+        <h2 className="font-display text-5xl md:text-8xl leading-[0.95]">All <span className="italic">Work</span></h2>
         <div className="flex flex-wrap items-center gap-2">
           {FILTERS.map((f) => (
             <button

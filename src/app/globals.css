@@ -3,7 +3,8 @@
 :root {
   --bg: #0a0a0a;
   --fg: #f2f1ed;
-  --gold: #c8a24a;
+  /* Refined, less-brassy gold — keeps the Cannes warmth without the luxury cliché */
+  --gold: #c6aa6e;
 }
 
 @theme inline {

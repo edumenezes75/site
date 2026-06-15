@@ -33,11 +33,11 @@ export default async function ProjectPage({
           <TransitionLink href="/#index" data-cursor="link" data-cursor-label="Index" className="hover:text-gold transition-colors">
             ← Back to Index
           </TransitionLink>
-          <span>{project.timecode} · {index + 1} / {projects.length}</span>
+          <span>No. {String(index + 1).padStart(2, "0")} / {projects.length}</span>
         </div>
 
         <div className="px-6 md:px-12 pb-10">
-          <h1 className="font-display font-medium text-[12vw] md:text-[7vw] leading-[0.95] uppercase max-w-5xl">
+          <h1 className="font-display text-[13vw] md:text-[8vw] leading-[0.92] max-w-5xl">
             {project.title}
           </h1>
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-1 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/70">
@@ -117,7 +117,7 @@ export default async function ProjectPage({
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/55">
             {isFirst ? "↺ Wrap to last" : `← Previous · ${index} / ${projects.length}`}
           </span>
-          <h3 className="mt-3 font-display font-medium text-3xl md:text-5xl uppercase transition-transform duration-300 group-hover:-translate-x-2">
+          <h3 className="mt-3 font-display text-3xl md:text-5xl transition-transform duration-300 group-hover:-translate-x-2">
             {prev.title}
           </h3>
         </TransitionLink>
@@ -130,7 +130,7 @@ export default async function ProjectPage({
           <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/55">
             {isLast ? "Wrap to first ↺" : `Next · ${index + 2} / ${projects.length} →`}
           </span>
-          <h3 className="mt-3 font-display font-medium text-3xl md:text-5xl uppercase transition-transform duration-300 group-hover:translate-x-2">
+          <h3 className="mt-3 font-display text-3xl md:text-5xl transition-transform duration-300 group-hover:translate-x-2">
             {next.title}
           </h3>
         </TransitionLink>

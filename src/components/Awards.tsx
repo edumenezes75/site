@@ -38,7 +38,7 @@ export default function Awards() {
   return (
     <section id="awards" className="relative bg-bg text-fg px-6 md:px-12 py-16 md:py-24 border-t border-fg/10">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
-        <h2 className="font-display font-medium text-4xl md:text-7xl uppercase">Awards</h2>
+        <h2 className="font-display text-5xl md:text-8xl">Awards</h2>
         <div className="font-mono flex items-baseline gap-3">
           <span ref={numberRef} className="font-display font-medium text-5xl md:text-8xl text-gold">
             0

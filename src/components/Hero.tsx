@@ -74,13 +74,13 @@ export default function Hero() {
       <div className="flex-1 flex flex-col justify-center gap-8 px-6 md:px-12">
         <h1
           ref={titleRef}
-          className="font-display font-medium text-[16vw] md:text-[11vw] leading-[0.85] tracking-tight uppercase"
+          className="font-display text-[17vw] md:text-[12vw] leading-[0.82] tracking-[-0.01em]"
         >
           <span className="block">
-            <SplitWord text="EDU" />
+            <SplitWord text="Edu" />
           </span>
-          <span className="block">
-            <SplitWord text="MENEZES" />
+          <span className="block italic">
+            <SplitWord text="Menezes" />
           </span>
         </h1>
 
@@ -98,19 +98,9 @@ export default function Hero() {
         </button>
       </div>
 
-      <div className="flex items-center justify-between px-6 md:px-12 pb-8 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/65">
+      <div className="flex items-center justify-between px-6 md:px-12 pb-10 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/65">
         <span>Director — Motion Design — Edit</span>
         <span>Showreel 2025 · 8 Cannes Lions</span>
-      </div>
-
-      <div className="h-10 w-full border-t border-fg/10 flex">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className="flex-1 border-r border-fg/10 last:border-r-0 relative">
-            <span className="absolute left-1.5 bottom-1.5 font-mono text-[9px] text-fg/45">
-              {String(i).padStart(2, "0")}
-            </span>
-          </div>
-        ))}
       </div>
     </section>
   );

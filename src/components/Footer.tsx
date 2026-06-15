@@ -4,9 +4,9 @@ export default function Footer() {
       id="about"
       className="bg-bg text-fg px-6 md:px-12 py-16 md:py-24 border-t border-fg/10 flex flex-col md:flex-row md:items-end md:justify-between gap-10"
     >
-      <div className="max-w-xl">
-        <h2 className="font-display font-medium text-3xl md:text-6xl uppercase mb-6">About</h2>
-        <p className="font-mono text-xs md:text-base text-fg/70 leading-relaxed">
+      <div className="max-w-2xl">
+        <h2 className="font-display text-4xl md:text-7xl mb-6">About</h2>
+        <p className="font-display text-xl md:text-3xl text-fg/85 leading-snug">
           Edu Menezes is a director, motion designer and editor, with work for
           Adidas, Budweiser, Vivo, Itaú and UNESCO — in recurring partnership
           with Africa Creative DDB. His work pairs editorial rhythm with

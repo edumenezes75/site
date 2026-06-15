@@ -3,9 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import TransitionLink from "@/components/TransitionLink";
-import type { Project } from "@/data/projects";
+import { projects, type Project } from "@/data/projects";
 
 export default function IndexCard({ project, index }: { project: Project; index: number }) {
+  const catalogNo = projects.findIndex((p) => p.slug === project.slug) + 1;
+  const catalogLabel = `No. ${String(catalogNo).padStart(2, "0")}`;
   const [videoLoaded, setVideoLoaded] = useState(false);
   const rootRef = useRef<HTMLAnchorElement>(null);
   const videoRef = useCallback((el: HTMLVideoElement | null) => {
@@ -46,7 +48,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
       ref={rootRef}
       href={`/projects/${project.slug}`}
       data-cursor="play"
-      data-cursor-label={project.timecode}
+      data-cursor-label={catalogLabel}
       className="group block bg-fg/[0.03] border-b border-fg/10 hover:bg-fg/[0.06] transition-colors duration-300"
       onMouseEnter={() => setVideoLoaded(true)}
       onMouseLeave={(e) => {
@@ -113,9 +115,9 @@ export default function IndexCard({ project, index }: { project: Project; index:
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">
             <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-fg/55">
-              {project.timecode}{project.year ? ` · ${project.year}` : ""}
+              {catalogLabel} / {projects.length}{project.year ? ` · ${project.year}` : ""}
             </span>
-            <h3 className="mt-1.5 font-display font-medium text-xl md:text-2xl uppercase leading-[1.05] transition-transform duration-300 group-hover:translate-x-0.5">
+            <h3 className="mt-1.5 font-display text-2xl md:text-3xl leading-[1.02] transition-transform duration-300 group-hover:translate-x-0.5">
               {project.title}
             </h3>
             <span className="mt-1 block font-mono text-[9px] md:text-[10px] uppercase tracking-[0.15em] text-fg/65">
