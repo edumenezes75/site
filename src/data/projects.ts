@@ -204,7 +204,8 @@ export const projects: Project[] = [
       "Woodcut: Rafael Kenji, Pedro Cervini, Tiago Costa",
     ],
     overview: "Vivo imagined a rally where a river should exist to expose drought in the Amazon.",
-    brief: "Amazon Desert Rally imagined a race where a river used to be.",
+    brief:
+      "The rivers of the Amazon are drying out, but a crisis measured in statistics rarely moves anyone. Vivo needed to make a vanishing river impossible to ignore.",
     idea:
       "Built around the dry bed of the Rio Branco in Roraima, the film stages a fictional rally through what should be water — with the line \"Don't sponsor this rally\" connecting illegal deforestation, climate crisis and disappearing rivers into one image.",
     result:
