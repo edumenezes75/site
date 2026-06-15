@@ -9,6 +9,7 @@ export type Project = {
   year?: string;
   credits?: string[];
   hasFilm?: boolean;
+  featured?: boolean;
   overview: string;
   brief: string;
   idea: string;
@@ -19,6 +20,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "adidas-inevitable",
+    featured: true,
     timecode: "00:00:01:00",
     title: "Adidas Inevitable",
     client: "Adidas LATAM / Club América",
@@ -44,6 +46,7 @@ export const projects: Project[] = [
   },
   {
     slug: "one-second-ads",
+    featured: true,
     timecode: "00:01:14:08",
     title: "One Second Ads",
     client: "Budweiser / AB InBev",
@@ -70,6 +73,7 @@ export const projects: Project[] = [
   },
   {
     slug: "autism-journey",
+    featured: true,
     timecode: "00:02:30:12",
     title: "The Autism Journey",
     client: "Vivo / Telefônica Brasil",
@@ -97,6 +101,7 @@ export const projects: Project[] = [
   },
   {
     slug: "timeless-show",
+    featured: true,
     timecode: "00:03:45:20",
     title: "The Timeless Show",
     client: "Itaú",
@@ -153,6 +158,7 @@ export const projects: Project[] = [
   },
   {
     slug: "history-blocks",
+    featured: true,
     timecode: "00:06:18:16",
     title: "History Blocks",
     client: "UNESCO",
@@ -231,6 +237,7 @@ export const projects: Project[] = [
   },
   {
     slug: "go-equal",
+    featured: true,
     timecode: "00:10:05:18",
     title: "#GoEqual",
     client: "Marta / Go Equal Movement",
@@ -564,3 +571,20 @@ export const projects: Project[] = [
 
 // Total individual Cannes Lions won across all projects — update manually when new Lions are added.
 export const TOTAL_CANNES_LIONS = 8;
+
+export const DISCIPLINES = ["Direction", "Motion Design", "Editing"] as const;
+export type Discipline = (typeof DISCIPLINES)[number];
+
+// Derive Edu's disciplines on a project from the credit line that names him.
+// "Direction / Editing / Creative Leadership: Edu Menezes" -> [Direction, Editing]
+export function disciplinesOf(project: Project): Discipline[] {
+  const line = (project.credits ?? []).find((c) => /Edu Menezes/i.test(c)) ?? "";
+  const rolePart = line.split(":")[0] ?? "";
+  const out = new Set<Discipline>();
+  if (/direc/i.test(rolePart)) out.add("Direction");
+  if (/edit/i.test(rolePart)) out.add("Editing");
+  if (/motion/i.test(rolePart)) out.add("Motion Design");
+  // Default any uncredited project to Motion Design (his core discipline).
+  if (out.size === 0) out.add("Motion Design");
+  return [...out];
+}

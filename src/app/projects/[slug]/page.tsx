@@ -29,16 +29,11 @@ export default async function ProjectPage({
         <CaseVideo video={project.video} hue={project.hue} title={project.title} hasFilm={project.hasFilm} />
         <div className="absolute inset-0 -z-10 bg-black/30" />
 
-        <div className="flex items-center justify-between px-6 md:px-12 pt-8 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/70">
-          <div className="flex items-center gap-6">
-            <TransitionLink href="/#index" data-cursor="link" data-cursor-label="Index" className="hover:text-gold transition-colors">
-              ← Index
-            </TransitionLink>
-            <TransitionLink href="/#about" data-cursor="link" data-cursor-label="About" className="hover:text-gold transition-colors">
-              About
-            </TransitionLink>
-          </div>
-          <span>{project.timecode}</span>
+        <div className="flex items-center justify-between px-6 md:px-12 pt-20 md:pt-24 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/80">
+          <TransitionLink href="/#index" data-cursor="link" data-cursor-label="Index" className="hover:text-gold transition-colors">
+            ← Back to Index
+          </TransitionLink>
+          <span>{project.timecode} · {index + 1} / {projects.length}</span>
         </div>
 
         <div className="px-6 md:px-12 pb-10">
@@ -49,7 +44,7 @@ export default async function ProjectPage({
             {project.year && <span>{project.year}</span>}
             {project.year && <span className="text-fg/40">·</span>}
             <span>{project.client}</span>
-            <span className="text-fg/40">·</span>
+            <span className="text-fg/55">·</span>
             <span>{project.agency}</span>
             {project.award && <span className="text-gold">{project.award}</span>}
           </div>
@@ -119,8 +114,8 @@ export default async function ProjectPage({
           data-cursor-label={prev.timecode}
           className="group px-6 md:px-12 py-12 md:py-16 border-b md:border-b-0 md:border-r border-fg/10 transition-colors hover:bg-fg/[0.03]"
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/40">
-            {isFirst ? "↺ Wrap to last" : "← Previous"}
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/55">
+            {isFirst ? "↺ Wrap to last" : `← Previous · ${index} / ${projects.length}`}
           </span>
           <h3 className="mt-3 font-display font-medium text-3xl md:text-5xl uppercase transition-transform duration-300 group-hover:-translate-x-2">
             {prev.title}
@@ -132,8 +127,8 @@ export default async function ProjectPage({
           data-cursor-label={next.timecode}
           className="group px-6 md:px-12 py-12 md:py-16 text-right transition-colors hover:bg-fg/[0.03]"
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/40">
-            {isLast ? "Wrap to first ↺" : "Next →"}
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/55">
+            {isLast ? "Wrap to first ↺" : `Next · ${index + 2} / ${projects.length} →`}
           </span>
           <h3 className="mt-3 font-display font-medium text-3xl md:text-5xl uppercase transition-transform duration-300 group-hover:translate-x-2">
             {next.title}

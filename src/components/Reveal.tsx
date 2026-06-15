@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 
 export default function Reveal({
   children,
@@ -15,6 +16,10 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (prefersReducedMotion()) {
+      gsap.set(el, { y: 0, opacity: 1 });
+      return;
+    }
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,

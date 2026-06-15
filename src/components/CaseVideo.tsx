@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 
 type CaseVideoProps = {
   video?: string;
@@ -28,6 +29,15 @@ export default function CaseVideo({ video, hue, title, scrub, hasFilm }: CaseVid
     if (!scrub) return;
     const el = videoRef.current;
     if (!el) return;
+
+    // With reduced motion, scrubbing on scroll is disorienting and a frozen
+    // frame looks broken — fall back to a gentle muted autoplay loop instead.
+    if (prefersReducedMotion()) {
+      el.muted = true;
+      el.loop = true;
+      void el.play().catch(() => {});
+      return;
+    }
 
     el.pause();
 

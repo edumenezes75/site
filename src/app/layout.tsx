@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import PageTransition from "@/components/PageTransition";
+import SiteHeader from "@/components/SiteHeader";
 
 const display = Bricolage_Grotesque({
   variable: "--font-display",
@@ -47,6 +48,7 @@ export default function RootLayout({
         <SmoothScroll>
           <CustomCursor />
           <PageTransition />
+          <SiteHeader />
           {children}
         </SmoothScroll>
       </body>

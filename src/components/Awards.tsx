@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 import { projects, TOTAL_CANNES_LIONS } from "@/data/projects";
 
 export default function Awards() {
@@ -11,6 +12,10 @@ export default function Awards() {
   useEffect(() => {
     if (!numberRef.current) return;
     const el = numberRef.current;
+    if (prefersReducedMotion()) {
+      el.textContent = TOTAL_CANNES_LIONS.toString();
+      return;
+    }
     const counter = { val: 0 };
     const ctx = gsap.context(() => {
       gsap.to(counter, {
@@ -38,13 +43,13 @@ export default function Awards() {
           <span ref={numberRef} className="font-display font-medium text-5xl md:text-8xl text-gold">
             0
           </span>
-          <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/40">
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
             Cannes Lions
           </span>
         </div>
       </div>
 
-      <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] text-fg/30">
+      <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] text-fg/55">
         Full record — Cannes Lions, El Ojo, Effie, D&amp;AD and more
       </p>
       <ul className="font-mono text-xs md:text-base divide-y divide-fg/10">
@@ -53,8 +58,8 @@ export default function Awards() {
             key={p.slug}
             className="grid grid-cols-[1fr_auto] md:grid-cols-3 items-center gap-2 py-4 uppercase tracking-wide"
           >
-            <span className="text-fg/80">{p.title}</span>
-            <span className="hidden md:block text-fg/40">{p.client}</span>
+            <span className="text-fg/90">{p.title}</span>
+            <span className="hidden md:block text-fg/60">{p.client}</span>
             <span className="text-right text-gold">{p.award}</span>
           </li>
         ))}

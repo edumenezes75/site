@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 
 function SplitWord({ text }: { text: string }) {
   return (
@@ -9,7 +10,7 @@ function SplitWord({ text }: { text: string }) {
       {text.split("").map((char, i) => (
         <span className="inline-block overflow-hidden" key={i}>
           <span className="char inline-block will-change-transform">
-            {char === " " ? " " : char}
+            {char === " " ? " " : char}
           </span>
         </span>
       ))}
@@ -22,10 +23,15 @@ const heroPoster = "/videos/posters/reel.jpg";
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (!titleRef.current) return;
     const chars = titleRef.current.querySelectorAll(".char");
+    if (prefersReducedMotion()) {
+      gsap.set(chars, { yPercent: 0, opacity: 1 });
+      return;
+    }
     gsap.fromTo(
       chars,
       { yPercent: 120, opacity: 0 },
@@ -40,9 +46,19 @@ export default function Hero() {
     );
   }, []);
 
+  const watchReel = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.muted = false;
+    el.currentTime = 0;
+    void el.play();
+    void el.requestFullscreen?.();
+  };
+
   return (
     <section className="relative isolate h-screen w-full flex flex-col justify-between overflow-hidden bg-bg text-fg">
       <video
+        ref={videoRef}
         className="absolute inset-0 -z-20 h-full w-full object-cover opacity-60"
         src={heroVideo}
         poster={heroPoster}
@@ -55,7 +71,7 @@ export default function Hero() {
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg/40 via-bg/70 to-bg" />
 
-      <div className="flex-1 flex items-center px-6 md:px-12">
+      <div className="flex-1 flex flex-col justify-center gap-8 px-6 md:px-12">
         <h1
           ref={titleRef}
           className="font-display font-medium text-[16vw] md:text-[11vw] leading-[0.85] tracking-tight uppercase"
@@ -67,9 +83,22 @@ export default function Hero() {
             <SplitWord text="MENEZES" />
           </span>
         </h1>
+
+        <button
+          type="button"
+          onClick={watchReel}
+          data-cursor="play"
+          data-cursor-label="Play reel"
+          className="group inline-flex w-fit items-center gap-3 rounded-full border border-fg/25 bg-black/30 px-5 py-3 font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] text-fg backdrop-blur-sm transition-colors hover:border-gold hover:text-gold"
+        >
+          <span className="grid h-7 w-7 place-items-center rounded-full bg-gold text-bg transition-transform group-hover:scale-110">
+            ▶
+          </span>
+          Watch Showreel — 1:44
+        </button>
       </div>
 
-      <div className="flex items-center justify-between px-6 md:px-12 pb-8 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/50">
+      <div className="flex items-center justify-between px-6 md:px-12 pb-8 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/65">
         <span>Director — Motion Design — Edit</span>
         <span>Showreel 2025 · 8 Cannes Lions</span>
       </div>
@@ -77,7 +106,7 @@ export default function Hero() {
       <div className="h-10 w-full border-t border-fg/10 flex">
         {Array.from({ length: 12 }).map((_, i) => (
           <div key={i} className="flex-1 border-r border-fg/10 last:border-r-0 relative">
-            <span className="absolute left-1.5 bottom-1.5 font-mono text-[9px] text-fg/30">
+            <span className="absolute left-1.5 bottom-1.5 font-mono text-[9px] text-fg/45">
               {String(i).padStart(2, "0")}
             </span>
           </div>
