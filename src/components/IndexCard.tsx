@@ -72,12 +72,12 @@ export default function IndexCard({ project, index }: { project: Project; index:
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             priority={index < 3}
-            className="object-cover grayscale transition-[filter,transform] duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.03] group-data-[inview]:grayscale-0"
+            className="object-cover grayscale sepia-[.42] brightness-[.96] transition-[filter,transform] duration-700 ease-out group-hover:grayscale-0 group-hover:sepia-0 group-hover:brightness-100 group-hover:scale-[1.03] group-data-[inview]:grayscale-0 group-data-[inview]:sepia-0 group-data-[inview]:brightness-100"
           />
         ) : (
           <div
             aria-hidden
-            className="absolute inset-0 grayscale transition-[filter,transform] duration-700 ease-out group-hover:grayscale-0 group-hover:scale-[1.03]"
+            className="absolute inset-0 grayscale sepia-[.42] brightness-[.96] transition-[filter,transform] duration-700 ease-out group-hover:grayscale-0 group-hover:sepia-0 group-hover:brightness-100 group-hover:scale-[1.03]"
             style={{
               background: `linear-gradient(135deg, hsl(${project.hue} 70% 45%), hsl(${project.hue + 40} 70% 12%))`,
             }}
