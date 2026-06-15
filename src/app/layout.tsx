@@ -47,6 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${mono.variable} h-full antialiased`}>
+      <head>
+        <link rel="preload" as="image" href="/videos/posters/reel.jpg" fetchPriority="high" />
+      </head>
       <body className="min-h-full bg-bg text-fg">
         <SmoothScroll>
           <CustomCursor />
