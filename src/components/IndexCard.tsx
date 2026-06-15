@@ -42,6 +42,9 @@ export default function IndexCard({ project, index }: { project: Project; index:
   const poster = project.video
     ? `/videos/posters/${project.video.replace(/\.mp4$/, ".jpg")}`
     : undefined;
+  // Index previews are tiny muted clips (~640px); the full film with audio
+  // only loads on the project page, keeping the index light to scroll.
+  const previewSrc = project.video ? `/videos/previews/${project.video}` : undefined;
 
   return (
     <TransitionLink
@@ -88,7 +91,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
             loop
             playsInline
             preload="none"
-            src={`/videos/${project.video}`}
+            src={previewSrc}
             className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         )}
