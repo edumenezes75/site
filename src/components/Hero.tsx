@@ -42,23 +42,6 @@ export default function Hero() {
     );
   }, []);
 
-  // Defer the background reel until after load — the poster paints instantly
-  // (fast, stable first view) and the video starts once the page has settled.
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el || prefersReducedMotion()) return;
-    let done = false;
-    const start = () => {
-      if (done) return;
-      done = true;
-      el.play().catch(() => {});
-    };
-    const schedule = () => window.setTimeout(start, 400);
-    if (document.readyState === "complete") schedule();
-    else window.addEventListener("load", schedule, { once: true });
-    return () => window.removeEventListener("load", schedule);
-  }, []);
-
   const watchReel = () => {
     track("watch_showreel");
     const el = videoRef.current;
