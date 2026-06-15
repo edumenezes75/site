@@ -1,11 +1,41 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import CaseVideo from "@/components/CaseVideo";
 import Reveal from "@/components/Reveal";
 import TransitionLink from "@/components/TransitionLink";
 
+const BASE = "https://edumenezes.me";
+
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+  const title = `${project.title} — Edu Menezes`;
+  const description = project.overview;
+  const url = `${BASE}/projects/${slug}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/projects/${slug}` },
+    openGraph: { title, description, url, type: "article", siteName: "Edu Menezes" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
+
+// "2:03" -> "PT2M3S" for schema.org duration
+function isoDuration(d?: string) {
+  if (!d) return undefined;
+  const [m, s] = d.split(":").map(Number);
+  return `PT${m}M${s}S`;
 }
 
 export default async function ProjectPage({
@@ -23,8 +53,34 @@ export default async function ProjectPage({
   const isFirst = index === 0;
   const isLast = index === projects.length - 1;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.overview,
+    url: `${BASE}/projects/${slug}`,
+    creator: { "@type": "Person", name: "Edu Menezes", url: BASE },
+    ...(project.year && { dateCreated: project.year }),
+    ...(project.award && { award: project.award }),
+    ...(project.video && {
+      video: {
+        "@type": "VideoObject",
+        name: project.title,
+        description: project.overview,
+        thumbnailUrl: `${BASE}/videos/posters/${project.video.replace(/\.mp4$/, ".jpg")}`,
+        contentUrl: `${BASE}/videos/${project.video}`,
+        ...(project.year && { uploadDate: `${project.year}-01-01` }),
+        ...(isoDuration(project.duration) && { duration: isoDuration(project.duration) }),
+      },
+    }),
+  };
+
   return (
     <main className="bg-bg text-fg">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="relative isolate h-screen w-full flex flex-col justify-between overflow-hidden">
         <CaseVideo video={project.video} hue={project.hue} title={project.title} hasFilm={project.hasFilm} />
         <div className="absolute inset-0 -z-10 bg-black/30" />
