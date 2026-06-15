@@ -52,7 +52,7 @@ export default function IndexCard({ project, index }: { project: Project; index:
       href={`/projects/${project.slug}`}
       data-cursor="play"
       data-cursor-label={catalogLabel}
-      className="group block border-b border-fg/10 transition-colors duration-300"
+      className="group block bg-bg border-b border-fg/10 transition-colors duration-300 hover:bg-white/[0.02]"
       onMouseEnter={() => setVideoLoaded(true)}
       onMouseLeave={(e) => {
         const v = (e.currentTarget as HTMLElement).querySelector("video") as HTMLVideoElement | null;
