@@ -46,7 +46,7 @@ export default function ProjectIndex() {
                 href={`/projects/${p.slug}`}
                 data-cursor="play"
                 data-cursor-label={`No. ${String(no).padStart(2, "0")}`}
-                className="group grid grid-cols-[auto_1fr] md:grid-cols-[80px_1.4fr_1fr_auto] items-baseline gap-x-4 md:gap-x-8 gap-y-1 py-5 md:py-6"
+                className="group grid grid-cols-[40px_1fr] md:grid-cols-[60px_1.6fr_1fr_1fr] items-center gap-x-4 md:gap-x-8 gap-y-1 py-5 md:py-6"
               >
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/45">
                   {String(no).padStart(2, "0")}
@@ -54,11 +54,11 @@ export default function ProjectIndex() {
                 <span className="font-display text-xl md:text-2xl transition-colors group-hover:text-gold">
                   {p.title}
                 </span>
-                <span className="hidden md:block font-mono text-[10px] uppercase tracking-[0.2em] text-fg/55">
+                <span className="col-start-2 md:col-start-3 font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">
                   {p.client}
                 </span>
-                <span className="justify-self-end font-mono text-[10px] uppercase tracking-[0.2em] text-gold/90">
-                  {p.award ?? p.year ?? ""}
+                <span className="hidden md:block font-mono text-[10px] uppercase tracking-[0.2em] text-fg/45">
+                  {p.agency}
                 </span>
               </TransitionLink>
             </li>
