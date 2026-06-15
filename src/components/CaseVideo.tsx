@@ -115,7 +115,7 @@ export default function CaseVideo({ video, hue, title, scrub, hasFilm }: CaseVid
         <img src={posterUrl} alt={title} className="absolute inset-0 -z-10 h-full w-full object-cover" />
         {!scrub && (
           <span className="absolute bottom-8 right-6 md:right-12 z-10 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/50">
-            Preview unavailable
+            This reel is offline for a moment
           </span>
         )}
       </>

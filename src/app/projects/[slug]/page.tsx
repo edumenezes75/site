@@ -89,7 +89,7 @@ export default async function ProjectPage({
 
         <div className="flex items-center justify-between px-6 md:px-12 pt-20 md:pt-24 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/80">
           <TransitionLink href="/#index" data-cursor="link" data-cursor-label="Index" className="hover:text-gold transition-colors">
-            ← Back to Index
+            ← All work
           </TransitionLink>
           <span>No. {String(index + 1).padStart(2, "0")} / {projects.length}</span>
         </div>

@@ -11,12 +11,12 @@ test("homepage loads with correct title", async ({ page }) => {
 test("hero renders the name and value prop", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("h1")).toContainText("Menezes");
-  await expect(page.getByText(/motion designer/i).first()).toBeVisible();
+  await expect(page.getByText(/motion design/i).first()).toBeVisible();
 });
 
 test("conversion CTA is present in the header", async ({ page }) => {
   await page.goto("/");
-  const cta = page.locator('header a:has-text("Start a project")');
+  const cta = page.locator('header a:has-text("Send a brief")');
   await expect(cta).toBeVisible();
   await expect(cta).toHaveAttribute("href", /^mailto:/);
 });
@@ -30,7 +30,7 @@ test("index lists project links", async ({ page }) => {
 test("project page renders title and back link", async ({ page }) => {
   await page.goto("/projects/one-second-ads");
   await expect(page.locator("h1")).toContainText("One Second Ads");
-  await expect(page.getByText("Back to Index")).toBeVisible();
+  await expect(page.getByText("All work").first()).toBeVisible();
 });
 
 test("project page has prev/next navigation", async ({ page }) => {

@@ -4,7 +4,7 @@ export const EMAIL = "edumenezes75@gmail.com";
 // which is the site's single conversion goal.
 const SUBJECT = "Project inquiry — Edu Menezes";
 const BODY = [
-  "Hi Edu,",
+  "Hi Edu — here's what we're thinking:",
   "",
   "Agency / brand:",
   "Project:",

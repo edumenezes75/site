@@ -12,8 +12,8 @@ export default function NotFound() {
         <h1 className="font-display font-medium text-[20vw] md:text-[14vw] leading-[0.85] uppercase">
           404
         </h1>
-        <p className="mt-6 font-mono text-xs md:text-base uppercase tracking-[0.2em] text-fg/50">
-          This frame doesn&apos;t exist.
+        <p className="mt-6 font-mono text-xs md:text-base uppercase tracking-[0.2em] text-fg/60">
+          This frame isn&apos;t in the edit.
         </p>
         <Link
           href="/"
@@ -21,7 +21,7 @@ export default function NotFound() {
           data-cursor-label="Home"
           className="mt-8 inline-block font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-gold hover:text-fg transition-colors"
         >
-          ← Back to Index
+          ← All work
         </Link>
       </div>
 

@@ -6,7 +6,6 @@ import { BRIEF_MAILTO } from "@/lib/contact";
 
 const links = [
   { href: "/#index", label: "Work" },
-  { href: "/#awards", label: "Awards" },
   { href: "/#about", label: "About" },
 ];
 
@@ -43,7 +42,7 @@ export default function SiteHeader() {
             onClick={() => track("start_project", { location: "header" })}
             className="rounded-full bg-gold px-3.5 py-1.5 text-bg tracking-[0.15em] transition-opacity hover:opacity-85"
           >
-            Start a project
+            Send a brief
           </a>
         </div>
       </nav>

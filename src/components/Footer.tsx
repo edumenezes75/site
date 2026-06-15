@@ -11,34 +11,30 @@ export default function Footer() {
         {/* About */}
         <div className="max-w-xl">
           <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-fg/50 mb-6">About</h2>
-          <p className="font-display text-2xl md:text-3xl text-fg/85 leading-snug">
-            I&apos;m a senior motion designer and editor — 20+ years across
-            advertising, film and documentary.
+          <p className="font-display text-3xl md:text-4xl text-fg/90 leading-tight">
+            I chase the cut that makes you feel something before you understand it.
           </p>
-          <p className="mt-6 font-display text-xl md:text-2xl text-fg/65 leading-snug">
-            I&apos;ve freelanced with leading agencies in Brazil and worldwide —
-            Wieden+Kennedy, GUT, Ogilvy, R/GA, AlmapBBDO, and U.S. shops like
-            FCB Chicago and BBH New York — and spent years at O2 Filmes alongside
-            directors such as Fernando Meirelles. Lately I led motion, VFX and
-            titles on <span className="italic">Bituca</span>, the Milton Nascimento
-            documentary that ran in cinemas and on TV Globo.
-          </p>
-          <p className="mt-6 font-display text-xl md:text-2xl text-fg/65 leading-snug">
-            What I chase is rhythm — the cut, the pace, the moment a piece breathes,
-            where motion stops being decoration and becomes the idea. Recognized at
-            Cannes Lions, El Ojo and D&amp;AD.
+          <p className="mt-8 font-display text-xl md:text-2xl text-fg/65 leading-snug">
+            Motion designer and editor — 20+ years across advertising, film and
+            documentary. I&apos;ve worked with agencies in Brazil and
+            worldwide — Wieden+Kennedy, GUT, Ogilvy, R/GA, AlmapBBDO, and U.S. shops
+            like FCB Chicago and BBH New York — and spent years at O2 Filmes
+            alongside directors such as Fernando Meirelles. Lately I led motion,
+            VFX and titles on <span className="italic">Bituca</span>, the Milton
+            Nascimento documentary that ran in cinemas and on TV Globo. Recognized
+            at Cannes Lions, El Ojo and D&amp;AD.
           </p>
         </div>
 
         {/* Contact — the single conversion action */}
         <div className="flex flex-col md:items-end md:text-right">
           <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-fg/60 mb-6">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold motion-safe:animate-pulse" />
-            Available for projects worldwide
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
+            Available for select projects, worldwide
           </span>
           <h2 className="font-display text-5xl md:text-7xl leading-[0.95] mb-8">
             Have a brief?<br />
-            <span className="italic">Let&apos;s talk.</span>
+            <span className="italic">Send it over.</span>
           </h2>
 
           <ContactButton
@@ -46,7 +42,7 @@ export default function Footer() {
             cursorLabel="Email"
             className="inline-flex w-fit items-center gap-3 rounded-full bg-gold px-6 py-3.5 font-mono text-xs uppercase tracking-[0.2em] text-bg transition-opacity hover:opacity-85"
           >
-            Start a project ↗
+            Send a brief ↗
           </ContactButton>
 
           <div className="mt-8 flex items-center gap-6 font-mono text-[10px] uppercase tracking-[0.2em] text-fg/60">

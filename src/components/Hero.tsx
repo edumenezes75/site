@@ -97,7 +97,7 @@ export default function Hero() {
         </h1>
 
         <p className="max-w-2xl font-display text-xl md:text-3xl text-fg/85 leading-snug">
-          Senior motion designer &amp; editor — advertising, film &amp; documentary.
+          Motion design and editing for film and advertising.
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
@@ -111,11 +111,11 @@ export default function Hero() {
             <span className="grid h-7 w-7 place-items-center rounded-full bg-gold text-bg transition-transform group-hover:scale-110">
               ▶
             </span>
-            Watch Showreel — 1:44
+            Watch the reel — 1:44
           </button>
-          <span className="inline-flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/70">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold motion-safe:animate-pulse" />
-            Available for projects worldwide
+          <span className="inline-flex items-center gap-2 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
+            Available for select projects, worldwide
           </span>
         </div>
       </div>
