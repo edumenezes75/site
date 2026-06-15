@@ -12,11 +12,21 @@ export default function Footer() {
         <div className="max-w-xl">
           <h2 className="font-mono text-[10px] uppercase tracking-[0.25em] text-fg/50 mb-6">About</h2>
           <p className="font-display text-2xl md:text-3xl text-fg/85 leading-snug">
-            Edu Menezes is a motion designer and director, with work for Adidas,
-            Budweiser, Vivo, Itaú and UNESCO — in recurring partnership with
-            Africa Creative DDB. His work pairs editorial rhythm with cinematic
-            motion design, recognized with 8 Cannes Lions, Effie and El Ojo de
-            Iberoamérica.
+            I&apos;m a senior motion designer and editor — 20+ years across
+            advertising, film and documentary.
+          </p>
+          <p className="mt-6 font-display text-xl md:text-2xl text-fg/65 leading-snug">
+            I&apos;ve freelanced with leading agencies in Brazil and worldwide —
+            Wieden+Kennedy, GUT, Ogilvy, R/GA, AlmapBBDO, and U.S. shops like
+            FCB Chicago and BBH New York — and spent years at O2 Filmes alongside
+            directors such as Fernando Meirelles. Lately I led motion, VFX and
+            titles on <span className="italic">Bituca</span>, the Milton Nascimento
+            documentary that ran in cinemas and on TV Globo.
+          </p>
+          <p className="mt-6 font-display text-xl md:text-2xl text-fg/65 leading-snug">
+            What I chase is rhythm — the cut, the pace, the moment a piece breathes,
+            where motion stops being decoration and becomes the idea. Recognized at
+            Cannes Lions, El Ojo and D&amp;AD.
           </p>
         </div>
 

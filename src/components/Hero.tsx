@@ -96,8 +96,8 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="max-w-xl font-display text-xl md:text-3xl text-fg/85 leading-snug">
-          Motion director for award-winning campaigns.
+        <p className="max-w-2xl font-display text-xl md:text-3xl text-fg/85 leading-snug">
+          Senior motion designer &amp; editor — advertising, film &amp; documentary.
         </p>
 
         <div className="flex flex-wrap items-center gap-4">

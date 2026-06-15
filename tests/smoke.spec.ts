@@ -11,7 +11,7 @@ test("homepage loads with correct title", async ({ page }) => {
 test("hero renders the name and value prop", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("h1")).toContainText("Menezes");
-  await expect(page.getByText("award-winning campaigns")).toBeVisible();
+  await expect(page.getByText(/motion designer/i).first()).toBeVisible();
 });
 
 test("conversion CTA is present in the header", async ({ page }) => {
