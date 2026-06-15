@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Agencies from "@/components/Agencies";
 import ProjectIndex from "@/components/ProjectIndex";
 import Awards from "@/components/Awards";
 import Footer from "@/components/Footer";
@@ -29,6 +30,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
       />
       <Hero />
+      <Agencies />
       <ProjectIndex />
       <Awards />
       <Footer />
