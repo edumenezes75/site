@@ -133,6 +133,7 @@ export const projects: Project[] = [
   },
   {
     slug: "faith-decoded",
+    featured: true,
     timecode: "00:05:02:04",
     title: "Faith Decoded",
     client: "Estadão Blue Studio",
@@ -164,7 +165,6 @@ export const projects: Project[] = [
   },
   {
     slug: "history-blocks",
-    featured: true,
     timecode: "00:06:18:16",
     title: "History Blocks",
     client: "UNESCO",
@@ -192,6 +192,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hermeto-made-of-music",
+    featured: true,
     timecode: "00:08:50:01",
     title: "Hermeto — Made Of Music",
     client: "Budweiser / AB InBev",
@@ -216,7 +217,6 @@ export const projects: Project[] = [
   },
   {
     slug: "go-equal",
-    featured: true,
     timecode: "00:10:05:18",
     title: "#GoEqual",
     client: "Marta / Go Equal Movement",
@@ -367,6 +367,7 @@ export const projects: Project[] = [
   },
   {
     slug: "spaten-night-fight",
+    featured: true,
     timecode: "00:21:20:01",
     title: "Spaten Night Fight",
     client: "Spaten / Ambev",
@@ -385,6 +386,7 @@ export const projects: Project[] = [
   },
   {
     slug: "air-silva",
+    featured: true,
     timecode: "00:22:35:07",
     title: "Air Silva",
     client: "Silva 1932 / Volt Sport",
@@ -410,6 +412,7 @@ export const projects: Project[] = [
   },
   {
     slug: "mr-congressman",
+    featured: true,
     timecode: "00:23:50:13",
     title: "Mr. Congressman",
     client: "MTV Brasil",
@@ -429,6 +432,7 @@ export const projects: Project[] = [
   },
   {
     slug: "havaianas-pinterest",
+    featured: true,
     timecode: "00:26:20:00",
     title: "Havaianas Pinterest",
     client: "Havaianas / Alpargatas",
@@ -447,6 +451,7 @@ export const projects: Project[] = [
   },
   {
     slug: "vale-dots",
+    featured: true,
     timecode: "00:27:35:06",
     title: "Vale Dots",
     client: "Vale",
@@ -464,7 +469,6 @@ export const projects: Project[] = [
   },
   {
     slug: "google-pixel",
-    featured: true,
     timecode: "00:28:50:00",
     title: "Most Inclusive Phone",
     client: "Google Pixel",
@@ -499,7 +503,6 @@ export const projects: Project[] = [
   },
   {
     slug: "courage-to-be-free",
-    featured: true,
     timecode: "00:31:20:00",
     title: "The Courage to Be Truly Free",
     client: "Alliance for LGBTQ Youth",
