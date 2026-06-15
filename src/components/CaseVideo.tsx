@@ -16,6 +16,7 @@ export default function CaseVideo({ video, hue, title, scrub, hasFilm }: CaseVid
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const el = videoRef.current;
@@ -104,13 +105,30 @@ export default function CaseVideo({ video, hue, title, scrub, hasFilm }: CaseVid
     void el.requestFullscreen?.();
   };
 
+  const posterUrl = `/videos/posters/${video.replace(/\.mp4$/, ".jpg")}`;
+
+  // If the video fails to load, fall back to the poster (never a black void).
+  if (failed) {
+    return (
+      <>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={posterUrl} alt={title} className="absolute inset-0 -z-10 h-full w-full object-cover" />
+        {!scrub && (
+          <span className="absolute bottom-8 right-6 md:right-12 z-10 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/50">
+            Preview unavailable
+          </span>
+        )}
+      </>
+    );
+  }
+
   return (
     <>
       <video
         ref={videoRef}
         className="absolute inset-0 -z-10 h-full w-full object-cover"
         src={`/videos/${video}`}
-        poster={`/videos/posters/${video.replace(/\.mp4$/, ".jpg")}`}
+        poster={posterUrl}
         autoPlay={!scrub}
         loop={!scrub}
         muted={muted}
@@ -118,6 +136,7 @@ export default function CaseVideo({ video, hue, title, scrub, hasFilm }: CaseVid
         playsInline
         preload={scrub ? "auto" : undefined}
         aria-label={`${title} — reel`}
+        onError={() => setFailed(true)}
       />
       {!scrub && hasFilm && (
         <div className="absolute bottom-8 right-6 md:right-12 z-10 flex items-center gap-2">
