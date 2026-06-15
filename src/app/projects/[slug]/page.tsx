@@ -4,6 +4,7 @@ import { projects } from "@/data/projects";
 import CaseVideo from "@/components/CaseVideo";
 import Reveal from "@/components/Reveal";
 import TransitionLink from "@/components/TransitionLink";
+import IndexCard from "@/components/IndexCard";
 
 const BASE = "https://edumenezes.me";
 
@@ -52,6 +53,7 @@ export default async function ProjectPage({
   const next = projects[(index + 1) % projects.length];
   const isFirst = index === 0;
   const isLast = index === projects.length - 1;
+  const more = projects.filter((p) => p.featured && p.slug !== slug).slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -154,12 +156,49 @@ export default async function ProjectPage({
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-gold">Credits</span>
           </Reveal>
           <Reveal>
-            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 font-mono text-xs md:text-sm text-fg/70 max-w-3xl">
-              {project.credits.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
+            <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-5 max-w-3xl">
+              {project.credits.map((line) => {
+                const i = line.indexOf(":");
+                const role = i > -1 ? line.slice(0, i).trim() : "";
+                const names = i > -1 ? line.slice(i + 1).trim() : line;
+                return (
+                  <li key={line} className="flex flex-col gap-1">
+                    {role && (
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg/55">
+                        {role}
+                      </span>
+                    )}
+                    <span className="font-display text-base md:text-lg text-fg/85 leading-snug">
+                      {names}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </Reveal>
+        </section>
+      )}
+
+      {more.length > 0 && (
+        <section className="px-6 md:px-12 pt-16 md:pt-24 border-t border-fg/10">
+          <div className="flex items-end justify-between mb-8">
+            <h2 className="font-display text-4xl md:text-6xl leading-[0.95]">
+              More <span className="italic">work</span>
+            </h2>
+            <TransitionLink
+              href="/#index"
+              data-cursor="link"
+              data-cursor-label="All"
+              className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60 hover:text-gold transition-colors"
+            >
+              View all ↗
+            </TransitionLink>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-fg/10 border-y border-fg/10">
+            {more.map((p, i) => (
+              <IndexCard key={p.slug} project={p} index={i} />
+            ))}
+          </div>
         </section>
       )}
 
