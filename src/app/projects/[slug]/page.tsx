@@ -131,14 +131,6 @@ export default async function ProjectPage({
         </Reveal>
       </section>
 
-      <section className="relative isolate h-[60vh] md:h-[80vh] w-full overflow-hidden border-t border-fg/10">
-        <CaseVideo video={project.video} hue={project.hue + 20} title={`${project.title} — breakdown`} scrub />
-        <div className="absolute inset-0 -z-10 bg-black/40" />
-        <div className="absolute bottom-6 left-6 md:left-12 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/70">
-          Breakdown
-        </div>
-      </section>
-
       <section className="px-6 md:px-12 py-16 md:py-24 border-t border-fg/10 grid md:grid-cols-[160px_1fr] gap-6 md:gap-12">
         <Reveal>
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-gold">The Result</span>

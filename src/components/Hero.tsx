@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { track } from "@vercel/analytics";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
-import { formatTimecode } from "@/lib/timecode";
 
 function SplitWord({ text }: { text: string }) {
   return (
@@ -29,20 +28,6 @@ const heroPoster = "/videos/posters/reel.jpg";
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const tcRef = useRef<HTMLSpanElement>(null);
-
-  // Live timecode that runs off the showreel's real playhead.
-  useEffect(() => {
-    let raf = 0;
-    const tick = () => {
-      const v = videoRef.current;
-      const el = tcRef.current;
-      if (v && el) el.textContent = formatTimecode(v.currentTime);
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
 
   useEffect(() => {
     if (!titleRef.current) return;
@@ -132,14 +117,6 @@ export default function Hero() {
             Available for projects worldwide
           </span>
         </div>
-      </div>
-
-      <div className="flex items-center justify-between gap-4 px-6 md:px-12 pb-10 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/65">
-        <span>Motion Design · Direction · Edit</span>
-        <span className="hidden sm:inline-flex items-center gap-2 text-gold/90 tabular-nums normal-case tracking-[0.1em]">
-          <span ref={tcRef}>00:00:00:00</span>
-        </span>
-        <span>Showreel 2025 · 8 Cannes Lions</span>
       </div>
     </section>
   );
