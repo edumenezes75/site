@@ -10,6 +10,7 @@ export type Project = {
   credits?: string[];
   hasFilm?: boolean;
   featured?: boolean;
+  duration?: string;
   overview: string;
   brief: string;
   idea: string;
@@ -42,6 +43,7 @@ export const projects: Project[] = [
     result:
       "Developed directly with Adidas LATAM's marketing team, the film became the centerpiece of the Club América kit launch across Mexico City.",
     video: "adidas-inevitable.mp4",
+    duration: "2:01",
     hasFilm: true,
   },
   {
@@ -69,6 +71,7 @@ export const projects: Project[] = [
     result:
       "Cannes Lions 2025 Grand Prix and Gold in Audio & Radio, plus two Silver and two Bronze Lions, a Gold and a Bronze at The One Show, a Silver at Clio and a D&AD shortlist — among the most awarded media ideas of the year.",
     video: "one-second-ads.mp4",
+    duration: "2:03",
     hasFilm: true,
   },
   {
@@ -97,6 +100,7 @@ export const projects: Project[] = [
     result:
       "Cannes Lions 2023 Bronze in Health & Wellness, a D&AD 2024 Bronze Pencil, and Merit recognitions at The One Show for Design and for Experiential & Immersive.",
     video: "the-autism-journey.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -124,6 +128,7 @@ export const projects: Project[] = [
     result:
       "Cannes Lions 2024 Bronze in PR and a Silver at MMA Smarties Brasil, expanding from a film into a cultural moment for Brazil's largest cultural patron.",
     video: "the-timeless-show.mp4",
+    duration: "2:17",
     hasFilm: true,
   },
   {
@@ -154,6 +159,7 @@ export const projects: Project[] = [
     result:
       "A data journalism piece for Estadão Blue Studio that traded academic tone for cinematic motion design, pairing editorial typography with rhythm-led data visualization.",
     video: "faith-decoded.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -181,6 +187,7 @@ export const projects: Project[] = [
     result:
       "Cannes Lions Bronze, a D&AD Yellow Pencil and Wood Pencil, a Silver Pencil at The One Show, and multiple Gold, Silver and Bronze awards at El Ojo — plus adoption as an educational resource in Brazilian schools.",
     video: "history-blocks.mp4",
+    duration: "1:53",
     hasFilm: true,
   },
   {
@@ -211,6 +218,7 @@ export const projects: Project[] = [
     result:
       "Effie Awards Latam 2024 Gold, plus Silver and Bronze at El Ojo de Iberoamérica and a shortlist at Clube de Criação.",
     video: "amazon-desert-rally.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -234,6 +242,7 @@ export const projects: Project[] = [
     result:
       "Cannes Lions 2018 Silver in Design, a Bronze Pencil and a Merit Award at The One Show 2019, and seven awards at El Ojo.",
     video: "hermeto-made-of-music.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -259,6 +268,7 @@ export const projects: Project[] = [
       "Highlights from men's football, recut with Marta's real stats and commentary — same plays, same numbers, different name. When Marta scored at the 2019 Women's World Cup and pointed to the spot, the gesture closed the loop between film and reality.",
     result: "Cannes Lions 2021 Gold and Silver, plus a Merit at The One Show 2020 — and a global conversation about equal pay in sport.",
     video: "go-equal.mp4",
+    duration: "2:00",
     hasFilm: true,
   },
   {
@@ -284,6 +294,7 @@ export const projects: Project[] = [
       "AI and archival research restored Machado's true Black features in his most circulated portrait, then animated the reveal across his own words.",
     result: "Cannes Lions 2019 Bronze in Design, and a correction that became a national conversation about racism, memory and representation in Brazilian literature.",
     video: "real-machado.mp4",
+    duration: "2:12",
     hasFilm: true,
   },
   {
@@ -309,6 +320,7 @@ export const projects: Project[] = [
       "Missing masterpieces recreated in a digital gallery for Compass UOL — turning the absence of the originals into the exhibition itself, and cultural loss into something people can finally look at.",
     result: "Clube de Criação Bronze in both Digital and Use of Technology.",
     video: "stolen-art-gallery.mp4",
+    duration: "1:44",
     hasFilm: true,
   },
   {
@@ -335,6 +347,7 @@ export const projects: Project[] = [
       "Resize the footballs and basketballs themselves to match the real disparities in pay, investment and airtime, and the inequality becomes something you can hold in your hands.",
     result: "Cannes Lions 2018 Silver and Bronze in Design, plus a Clio Sports Grand Award for espnW.",
     video: "inequality-balls.mp4",
+    duration: "2:09",
     hasFilm: true,
   },
   {
@@ -361,6 +374,7 @@ export const projects: Project[] = [
       "Male streamers and influencers played live under female usernames — the harassment that followed, unscripted, became the proof the campaign needed.",
     result: "Cannes Lions 2018 Silver in Glass: The Lion for Change, Bronze in PR, and finalist placements in Social & Influencer and Sustainable Development Goals.",
     video: "my-game-my-name.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -383,6 +397,7 @@ export const projects: Project[] = [
       "The mark was rebuilt around the \"Feito de Futuro\" platform — proportions and motion refined so the identity reads as both legacy and forward motion, ready for the bank's hundredth year.",
     result: "The new identity now anchors Itaú's visual system across every touchpoint, heading into the bank's centennial.",
     video: "itau-rebranding.mp4",
+    duration: "1:36",
     hasFilm: true,
   },
   {
@@ -406,6 +421,7 @@ export const projects: Project[] = [
       "Text, image and motion design were paced around the voice in the recordings, holding back wherever the material could carry itself — restraint as the structure, not the absence of one.",
     result: "BEA World Experience Grand Prix, plus Silver in B2C Event and Press & PR, and AMPRO Globe Gold and Bronze for Itaú.",
     video: "letters-from-simone.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -433,6 +449,7 @@ export const projects: Project[] = [
       "Oral folklore from local fishermen, turned into a multimedia storytelling format for Corona — repositioning the closed season as cultural tourism instead of downtime.",
     result: "Cannes Lions 2025 Silver in both Audio & Radio and Brand Experience.",
     video: "fisherman-storytellers.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -457,6 +474,7 @@ export const projects: Project[] = [
       "BEES, Ambev's B2B ordering app, was rebuilt in under 24 hours into a crisis hub — restocking, cleaning supplies, equipment replacement, repair services, cash vouchers, legal aid, insurance support and mental health helplines, all through the login bars already had.",
     result: "6,360 bars helped through the platform, 82% still operating a year later, 98.8% customer confidence in sales recovery, and Crisis Mode is now a permanent feature of the BEES app — alongside Cannes Lions 2025 Bronze in Sustainable Development Goals and a Creative B2B shortlist.",
     video: "sos-bees.mp4",
+    duration: "2:15",
     hasFilm: true,
   },
   {
@@ -474,6 +492,7 @@ export const projects: Project[] = [
       "Chael Sonnen returned to face Anderson Silva one more time, turning Spaten's debut into a live broadcast built around one of MMA's most recognizable rivalries in Brazil.",
     result: "A live branded event that put Spaten inside a symbolic final chapter for Anderson Silva's career in Brazil.",
     video: "spaten-night-fight.mp4",
+    duration: "2:09",
     hasFilm: true,
   },
   {
@@ -498,6 +517,7 @@ export const projects: Project[] = [
       "The Silva 1932 collection is built around his bicycle kick and the year 1932, using his silhouette and legacy as the visual spine of the campaign for Volt Sport.",
     result: "A cultural tribute that turns a jersey collection into a piece of football history — connecting Leônidas's legacy to the aesthetics of the modern game.",
     video: "air-silva.mp4",
+    duration: "2:13",
     hasFilm: true,
   },
   {
@@ -516,6 +536,7 @@ export const projects: Project[] = [
       "An AI trained on interviews, articles, news reports and congressional sessions generated a single virtual character whose answers reflected the average position of Brazil's political class — built for MTV Brasil and aimed at young voters.",
     result: "El Ojo de Iberoamérica 2018 Bronze in Creative Data.",
     video: "mr-congressman.mp4",
+    duration: "2:14",
     hasFilm: true,
   },
   {
@@ -533,6 +554,7 @@ export const projects: Project[] = [
       "For World Down Syndrome Day, the team's unbeaten record became the headline — reframing what \"winning\" means for a squad of athletes with Down syndrome, and putting their story ahead of the score.",
     result: "A campaign for Corinthians that shifted the conversation from disability to achievement, built entirely around a record that speaks for itself.",
     video: "team-never-lost.mp4",
+    duration: "2:04",
     hasFilm: true,
   },
   {
@@ -550,6 +572,7 @@ export const projects: Project[] = [
       "The brand's color, rhythm and tropical energy were translated into a library of Pinterest-native assets — extending the \"Made of Brazilian Summer\" platform into a space built for scroll-and-save behavior.",
     result: "A digital extension of Havaianas' global visual system for Alpargatas, built for Pinterest's discovery-first audience.",
     video: "havaianas-pinterest.mp4",
+    duration: "1:40",
     hasFilm: true,
   },
   {
@@ -566,6 +589,7 @@ export const projects: Project[] = [
       "A modular, dot-based visual language built to translate Vale's institutional themes into emotional, motion-led storytelling — direction, editing, motion design and sound effects in one hand.",
     result: "A new-business pitch reel developed by Edu Menezes with Sergio Gordilho, built to demonstrate creative development and motion storytelling rather than to run as a public campaign.",
     video: "vale-dots.mp4",
+    duration: "1:21",
     hasFilm: true,
   },
 ];
