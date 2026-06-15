@@ -18,7 +18,10 @@ function SplitWord({ text }: { text: string }) {
   );
 }
 
-const heroVideo = "/videos/reel.mp4";
+// Light, muted 720p loop for the autoplay background; the full 1080p reel
+// with audio is swapped in only when the visitor hits "Watch Showreel".
+const heroVideo = "/videos/reel-bg.mp4";
+const heroFullReel = "/videos/reel.mp4";
 const heroPoster = "/videos/posters/reel.jpg";
 
 export default function Hero() {
@@ -49,6 +52,11 @@ export default function Hero() {
   const watchReel = () => {
     const el = videoRef.current;
     if (!el) return;
+    // Swap the light background loop for the full reel with audio.
+    if (!el.src.includes(heroFullReel)) {
+      el.src = heroFullReel;
+      el.load();
+    }
     el.muted = false;
     el.currentTime = 0;
     void el.play();
