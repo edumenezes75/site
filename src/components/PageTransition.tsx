@@ -48,6 +48,9 @@ export default function PageTransition() {
       id="page-transition-overlay"
       aria-hidden
       className="fixed inset-0 z-[100] bg-bg pointer-events-none"
-    />
+    >
+      {/* Gold leading edge — the reveal line that sweeps the screen on transition */}
+      <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gold" />
+    </div>
   );
 }

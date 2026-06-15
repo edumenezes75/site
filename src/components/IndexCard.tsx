@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import TransitionLink from "@/components/TransitionLink";
 import { projects, type Project } from "@/data/projects";
+import { prefersReducedMotion } from "@/lib/motion";
 
 export default function IndexCard({ project, index }: { project: Project; index: number }) {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -45,6 +46,40 @@ export default function IndexCard({ project, index }: { project: Project; index:
     io.observe(el);
     return () => io.disconnect();
   }, [project.video]);
+
+  // Scroll-reveal entrance (staggered by column) — makes the index feel alive
+  // as you scroll. Robust: reduced-motion skips it, safety timeout un-hides.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || prefersReducedMotion()) return;
+    const delay = (index % 2) * 90;
+    const ease = "cubic-bezier(.16,1,.3,1)";
+    el.style.opacity = "0";
+    el.style.transform = "translateY(28px)";
+    el.style.transition = `opacity .8s ${ease} ${delay}ms, transform .8s ${ease} ${delay}ms`;
+    const reveal = () => {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    };
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          reveal();
+          io.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+    io.observe(el);
+    const t = window.setTimeout(() => {
+      reveal();
+      io.disconnect();
+    }, 4000);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(t);
+    };
+  }, [index]);
 
   return (
     <TransitionLink

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import TransitionLink from "@/components/TransitionLink";
 import { projects, type Project } from "@/data/projects";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
 // The lead project: a full-bleed, living hero that auto-plays its highlight —
 // gives the index a focal point and answers "a motion site shouldn't be static".
@@ -30,8 +31,11 @@ export default function LeadProject({ project }: { project: Project }) {
     return () => io.disconnect();
   }, []);
 
+  const revealRef = useScrollReveal<HTMLAnchorElement>();
+
   return (
     <TransitionLink
+      ref={revealRef}
       href={`/projects/${project.slug}`}
       data-cursor="play"
       data-cursor-label={`No. ${String(catalogNo).padStart(2, "0")}`}
