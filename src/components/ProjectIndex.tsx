@@ -10,40 +10,25 @@ const FILTERS: Filter[] = ["All", ...DISCIPLINES];
 
 const featured = projects.filter((p) => p.featured);
 const lead = featured[0];
-const restFeatured = featured.slice(1);
 
 export default function ProjectIndex() {
   const [filter, setFilter] = useState<Filter>("All");
 
-  const filtered = useMemo(
-    () =>
-      filter === "All"
-        ? projects
-        : projects.filter((p) => disciplinesOf(p).includes(filter)),
-    [filter]
-  );
+  // No duplication: on "All" the lead is the full-bleed hero and the grid
+  // shows everything else. On a discipline filter the hero steps aside and the
+  // grid shows the complete matching set (lead included if it matches).
+  const showLead = filter === "All";
+  const gridProjects = useMemo(() => {
+    if (filter === "All") return projects.filter((p) => p.slug !== lead?.slug);
+    return projects.filter((p) => disciplinesOf(p).includes(filter));
+  }, [filter]);
 
   return (
     <section id="index" className="relative bg-bg text-fg">
-      {/* Selected Work — a full-bleed lead, then a pair grid (rhythm, not a spreadsheet) */}
-      <div className="px-6 md:px-12 pt-16 md:pt-24 pb-8 md:pb-10 flex items-end justify-between">
-        <h2 className="font-display text-5xl md:text-8xl leading-[0.95]">Selected <span className="italic">Work</span></h2>
-        <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/55">
-          {featured.length} Highlights
-        </span>
-      </div>
-
-      {lead && <LeadProject project={lead} />}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-fg/10 border-b border-fg/10">
-        {restFeatured.map((p, i) => (
-          <IndexCard key={p.slug} project={p} index={i} />
-        ))}
-      </div>
-
-      {/* All Work + discipline filter */}
-      <div className="px-6 md:px-12 pt-20 md:pt-28 pb-8 md:pb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <h2 className="font-display text-5xl md:text-8xl leading-[0.95]">All <span className="italic">Work</span></h2>
+      <div className="px-6 md:px-12 pt-16 md:pt-24 pb-8 md:pb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <h2 className="font-display text-5xl md:text-8xl leading-[0.95]">
+          {filter === "All" ? <>Selected <span className="italic">Work</span></> : <>{filter}</>}
+        </h2>
         <div className="flex flex-wrap items-center gap-2">
           {FILTERS.map((f) => (
             <button
@@ -63,12 +48,17 @@ export default function ProjectIndex() {
           ))}
         </div>
       </div>
-      <div className="px-6 md:px-12 pb-4 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
-        {filtered.length} {filtered.length === 1 ? "Project" : "Projects"}
+
+      {showLead && lead && <LeadProject project={lead} />}
+
+      <div className="px-6 md:px-12 py-4 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-fg/60">
+        {showLead
+          ? `+ ${gridProjects.length} more`
+          : `${gridProjects.length} ${gridProjects.length === 1 ? "project" : "projects"}`}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-fg/10 border-t border-fg/10">
-        {filtered.map((p, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-fg/10 border-y border-fg/10">
+        {gridProjects.map((p, i) => (
           <IndexCard key={p.slug} project={p} index={i} />
         ))}
       </div>
